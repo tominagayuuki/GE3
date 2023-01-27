@@ -35,19 +35,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\shaders\Basic.hlsli">
-      <Filter>リソース ファイル</Filter>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <FxCompile Include="Resources\shaders\BasicPS.hlsl">
-      <Filter>リソース ファイル</Filter>
-    </FxCompile>
-    <FxCompile Include="Resources\shaders\BasicVS.hlsl">
-      <Filter>リソース ファイル</Filter>
-    </FxCompile>
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="Input.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
@@ -63,5 +50,18 @@
     <ClInclude Include="Sprite.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\shaders\Sprite.hlsli">
+      <Filter>リソース ファイル</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="Resources\shaders\SpritePS.hlsl">
+      <Filter>リソース ファイル</Filter>
+    </FxCompile>
+    <FxCompile Include="Resources\shaders\SpriteVS.hlsl">
+      <Filter>リソース ファイル</Filter>
+    </FxCompile>
   </ItemGroup>
 </Project>
