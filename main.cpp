@@ -58,10 +58,12 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
         dxCommon->PreDraw();
 
 #pragma region 最初のシーン描画
-
+        spriteCommon->PreDraw();
+        sprite->Draw();
 #pragma endregion
         //描画後処理
         dxCommon->PostDraw();
+       
     }
 
 #pragma region 最初のシーン終了

@@ -32,7 +32,7 @@ void Sprite::Initialize(SpriteCommon* _spriteCommon)
 	resDesc.SampleDesc.Count = 1;
 	resDesc.Layout = D3D12_TEXTURE_LAYOUT_ROW_MAJOR;
 	//¶¬
-	result = device->CreateCommittedResource(
+	result = spriteCommon->GetDirectXCommon()->GetDevice()->CreateCommittedResource(
 		&heapProp,
 		D3D12_HEAP_FLAG_NONE,
 		&resDesc,
@@ -57,4 +57,34 @@ void Sprite::Initialize(SpriteCommon* _spriteCommon)
 	vbView.BufferLocation = vertBuff->GetGPUVirtualAddress();
 	vbView.SizeInBytes = sizeVB;
 	vbView.StrideInBytes = sizeof(vertices[0]);
+
+	//Ý’è
+	D3D12_HEAP_PROPERTIES cbHeapProp{};
+	cbHeapProp.Type = D3D12_HEAP_TYPE_UPLOAD;
+	D3D12_RESOURCE_DESC cbResourceDesc{};
+	cbResourceDesc.Dimension = D3D12_RESOURCE_DIMENSION_BUFFER;
+	cbResourceDesc.Width = (sizeof(ConstBufferDataMaterial) + 0xff) & ~0xff;
+	cbResourceDesc.Height = 1;
+	cbResourceDesc.DepthOrArraySize = 1;
+	cbResourceDesc.MipLevels = 1;
+	cbResourceDesc.SampleDesc.Count = 1;
+	cbResourceDesc.Layout = D3D12_TEXTURE_LAYOUT_ROW_MAJOR;
+
+	//¶¬
+	result = spriteCommon->GetDirectXCommon()->GetDevice()->CreateCommittedResource(
+		&cbHeapProp,
+		D3D12_HEAP_FLAG_NONE,
+		&cbResourceDesc,
+		D3D12_RESOURCE_STATE_GENERIC_READ,
+		nullptr,
+		IID_PPV_ARGS(&ConstBufferMaterial)
+	);
+	assert(SUCCEEDED(result));
+}
+
+void Sprite::Draw()
+{
+	spriteCommon->GetDirectXCommon()->GetCommandList()->IASetVertexBuffers(0, 1, &vbView);
+
+	spriteCommon->GetDirectXCommon()->GetCommandList()->DrawInstanced(3, 1, 0, 0);
 }

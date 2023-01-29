@@ -57,10 +57,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="Resources\shaders\SpritePS.hlsl">
+    <FxCompile Include="Resources\shaders\SpriteVS.hlsl">
       <Filter>リソース ファイル</Filter>
     </FxCompile>
-    <FxCompile Include="Resources\shaders\SpriteVS.hlsl">
+    <FxCompile Include="Resources\shaders\SpritePS.hlsl">
       <Filter>リソース ファイル</Filter>
     </FxCompile>
   </ItemGroup>

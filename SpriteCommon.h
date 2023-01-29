@@ -1,4 +1,5 @@
 #pragma once
+#include<DirectXMath.h>
 #include<d3d12.h>
 #include<wrl.h>
 
@@ -6,6 +7,7 @@
 
 class SpriteCommon
 {
+
 public:
 	//‰Šú‰»
 	void Initialize(DirectXCommon*_dxCommon);
